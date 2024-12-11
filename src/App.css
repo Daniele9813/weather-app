@@ -32,3 +32,19 @@ h2 {
 p {
   font-size: 18px;
 }
+
+.forecast {
+  margin-top: 20px;
+}
+
+.forecast ul {
+  list-style: none;
+  padding: 0;
+}
+
+.forecast li {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
