@@ -50,6 +50,13 @@ const App = () => {
     if (pm2_5 <= 35) return 'Moderate';
     return 'Unhealthy';
   };
+
+  const formatTime = (timestamp, timezoneOffset) => {
+    const date = new Date((timestamp + timezoneOffset) * 1000); // Converti in millisecondi e aggiungi offset
+    const hours = date.getUTCHours().toString().padStart(2, '0');
+    const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  };
   
   const dailyForecast = forecast ? processForecastData(forecast) : [];
 
@@ -70,6 +77,13 @@ const App = () => {
 
   {weather && (
     <div>
+          <div>
+      <h2>{weather.name}, {weather.sys.country}</h2>
+      <p>Temperature: {weather.main.temp}°C</p>
+      <p>{weather.weather[0].description}</p>
+      <p>Sunrise: {formatTime(weather.sys.sunrise, weather.timezone)}</p>
+      <p>Sunset: {formatTime(weather.sys.sunset, weather.timezone)}</p>
+    </div>
       <h2>{weather.name}, {weather.sys.country}</h2>
       <p>Temperature: {weather.main.temp}°C</p>
       <p>
