@@ -10,7 +10,9 @@ export const getWeather = async (city) => {
   }
 
   const data = await response.json();
-  return data;
+  
+  const alerts = data.alerts || []; // Se non ci sono allerte, restituisci un array vuoto
+  return { ...data, alerts };
 };
 
 export const getForecast = async (city) => {
